@@ -42,12 +42,24 @@
 
 // fib(5);
 
-const fib = (n) => {
-  if (n <= 1) {
-    return n;
+// using recusrion
+
+// const fib = (n) => {
+//   if (n <= 1) return n;
+//   return fib(n - 1) + fib(n - 2);
+// };
+
+// const result = fib(5);
+// console.log(result); // Output: 5
+
+var twoSum = function (nums, target) {
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = i; j < nums.length; j++) {
+      if (nums[i] + nums[j] === target) {
+        return [i, j];
+      }
+    }
   }
-  return fib(n - 1) + fib(n - 2);
 };
 
-const result = fib(5);
-console.log(result); // Output: 5
+console.log(twoSum([2, 7, 11, 15], 9));
