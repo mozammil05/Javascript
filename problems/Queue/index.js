@@ -54,8 +54,9 @@
 
 class Node {
   constructor(value) {
+    this.left = left;
+    this.right = right;
     this.value = value;
-    this.next = null;
   }
 }
 
