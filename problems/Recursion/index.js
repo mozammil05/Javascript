@@ -30,7 +30,7 @@ function printN1(n) {
   if (n == 0) {
     return;
   }
-  printN1(n - 1);
+  printN1(n - 1,"");
   console.log(n);
 }
 
