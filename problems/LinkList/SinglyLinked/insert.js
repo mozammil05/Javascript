@@ -12,6 +12,8 @@ function insertStart(head, x) {
   return temp;
 }
 
+// time complexity o(1)
+
 function insertEnd(head, x) {
   let temp = new Node(x);
   if (head === null) {

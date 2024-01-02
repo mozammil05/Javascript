@@ -48,7 +48,5 @@ head.next.next.next = new Node(40);
 head.next.next.next.next = new Node(50);
 head.next.next.next.next.next = new Node(60);
 head.next.next.next.next.next.next = new Node(70);
-
-console.log("Original List:", printList(head));
 let nthNode = nthNodeFromEnd(head, 3); // Change 3 to the desired N value
 console.log("Nth Node from the End:", nthNode?.data);
