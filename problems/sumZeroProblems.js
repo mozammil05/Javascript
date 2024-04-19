@@ -10,4 +10,4 @@ function sumZero(arr) {
   }
 }
 
-console.log(sumZero(arr)); // output: [-2, 2]
+console.log(sumZero(arr)); // output: [-4, 4]
