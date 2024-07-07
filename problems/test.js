@@ -3182,13 +3182,11 @@ async function task2() {
 // }
 // console.log(isPrime(5));
 
+// function exactly3Deviser(num) {
 
-function exactly3Deviser(num) {
+// let res = Math.floor(num/10)
+// console.log(res)
 
-let res = Math.floor(num/10)
-console.log(res)
+// }
 
-}
-
-
-console.log(exactly3Deviser(60));
+// console.log(exactly3Deviser(60));
