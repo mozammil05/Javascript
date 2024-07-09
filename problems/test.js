@@ -3190,3 +3190,258 @@ async function task2() {
 // }
 
 // console.log(exactly3Deviser(60));
+
+// function sumUnderModulo(a, b) {
+//   let M = BigInt(1e9 + 7);
+//   // Convert a and b to BigInt
+//   let bigA = BigInt(a);
+//   let bigB = BigInt(b);
+//   // Calculate sum modulo M
+//   return ((bigA % M) + (bigB % M)) % M;
+// }
+
+// let a = 9223372036854775807n; // Note the 'n' at the end to denote BigInt
+// let b = 9223372036854775807n; // Note the 'n' at the end to denote BigInt
+// console.log(sumUnderModulo(a, b).toString()); // Convert the result to string for display
+
+//table without using loop
+// function table(n) {
+//   if (n >= 1) {
+//     table(n-1);
+//     console.log(n);
+//   }
+// }
+
+// console.log(table(5));
+
+// class RateLimiter {
+//   constructor() {
+//     this.requests = {};
+//   }
+
+//   isAllow(clenstId) {
+//     const timeInSeconds = Math.floor(Date.now() / 1000);
+//     const requestTime = timeInSeconds - 1;
+//     const allRequests = this.requests[clenstId] || [];
+//     const updatedRequests = allRequests.filter(
+//       (timeStamp) => timeStamp > requestTime
+//     );
+
+//     if (updatedRequests.length > 1000) {
+//       return false;
+//     }
+//     updatedRequests.push(requestTime);
+//     this.requests[clenstId] = updatedRequests;
+//     return true;
+//   }
+// }
+
+// added this ratelimiter
+// class RateLimiter {
+//   constructor(limit, timeWindow) {
+//     this.limit = limit;
+//     this.timeWindow = timeWindow; // timeWindow in seconds
+//     this.requests = {};
+//   }
+
+//   isAllow(clientId) {
+//     const currentTime = Math.floor(Date.now() / 1000); // Current time in seconds
+//     const timeWindowStart = currentTime - this.timeWindow;
+
+//     if (!this.requests[clientId]) {
+//       this.requests[clientId] = [];
+//     }
+
+//     // Filter out timestamps outside the time window
+//     const validRequests = this.requests[clientId].filter(
+//       (timestamp) => timestamp > timeWindowStart
+//     );
+
+//     if (validRequests.length >= this.limit) {
+//       return false;
+//     }
+
+//     // Add the current timestamp to the list of requests
+//     validRequests.push(currentTime);
+//     this.requests[clientId] = validRequests;
+
+//     return true;
+//   }
+// }
+
+// // Example usage:
+// const rateLimiter = new RateLimiter(1000, 1); // Limit to 1000 requests per second
+
+// // Simulating requests from a client
+// const clientId = "client1";
+// console.log(rateLimiter.isAllow(clientId)); // Should print true if within the limit
+// console.log(rateLimiter.isAllow(clientId)); // Should print true if within the limit
+
+// // Simulate reaching the limit
+// for (let i = 0; i < 1000; i++) {
+//   rateLimiter.isAllow(clientId);
+// }
+
+// console.log(rateLimiter.isAllow(clientId)); // Should print false if over the limit
+
+// function fetchAllApis(apis) {
+//   const promises = apis.map((url) => fetch(url));
+//   return Promise.allSettled(promises).then((res) => {
+//     for (const result of res) {
+//       if (result.status === "fulfilled") {
+//         return result.value;
+//       }
+//     }
+//     throw new Error("All promises failed");
+//   });
+// }
+
+// const apiUrls = [
+//   "https://jsonplaceholder.typicode.com/todos",
+//   "https://jsonplaceholder.typicode.com/todos",
+//   "https://jsonplaceholder.typicode.com/todos",
+//   "https://jsonplaceholder.typicode.com/todos",
+// ];
+
+// fetchAllApis(apiUrls)
+//   .then((res) => console.log(res))
+//   .catch((err) => console.log(err));
+
+//table without using loop
+// function table(n) {
+//   let result = [];
+//   if (n >= 1) {
+//     table(n - 1, result);
+//     result.push(n);
+//   }
+//   return result;
+// }
+
+// console.log(table(5));
+
+// function table(n, result = []) {
+//   if (n >= 1) {
+//     table(n - 1, result);
+//     result.push(n);
+//   }
+//   return result;
+// }
+
+// // Call the function with the desired value and join the result to a string
+// const result = table(5);
+// console.log(result.join(" "));
+
+// function fibonacci(n) {
+//   if (n <= 1) {
+//     return n;
+//   }
+//   return fibonacci(n - 1) + fibonacci(n - 2);
+// }
+
+// // let fib =[]
+// // for (let i = 0; i <10; i++) {
+// // fib.push(fibonacci(i))
+// // }
+// console.log(fibonacci(20));
+
+// function reverseSubArraysOfSizeK(arr, k) {
+//   for (let i = 0; i < arr.length; i += k) {
+//     let left = i;
+//     let right = Math.min(i + k - 1, arr.length - 1);
+
+//     while (left < right) {
+//       [arr[left], arr[right]] = [arr[right], arr[left]];
+//       left++;
+//       right--;
+//     }
+//   }
+//   return arr;
+// }
+// let arr = [1, 2, 3, 4, 5];
+// let k = 3;
+
+// console.log(reverseSubArraysOfSizeK(arr, k)); // [3, 2, 1, 5, 4]
+
+// function majorityWins(arr, x, y) {
+//   let countx = 0;
+//   let county = 0;
+
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] === x) {
+//       countx++;
+//     } else if (arr[i] == y) {
+//       county++;
+//     }
+//   }
+
+//   if (countx > county) {
+//     return x;
+//   } else if (countx < county) {
+//     return y;
+//   } else {
+//     return x < y ? x : y;
+//   }
+// }
+
+// let arr = [1, 1, 2, 2, 3, 3, 4, 4, 4, 4, 5];
+// let x = 4;
+// let y = 5;
+// console.log(majorityWins(arr, x, y)); // Output: 4
+
+// function largestAndSecondLargest(arr) {
+//   let largest = 0;
+//   let secondLargest = 0;
+//   for (let i = 1; i < arr.length; i++) {
+//     if (arr[i] > largest) {
+//       secondLargest = largest;
+//       largest = arr[i];
+//     } else if (arr[i] > secondLargest) {
+//       secondLargest = arr[i];
+//     }
+//   }
+//   return [largest, secondLargest];
+// }
+// let nums = [10, 10, 10, 10, 10, 10, 10, 10];
+// console.log(largestAndSecondLargest(nums)); // 10,-1
+
+// function medianAndMedian(arr) {
+//   let res = 0;
+//   let count = 0;
+//   let mean = 0;
+//   arr.sort((a, b) => a - b);
+//   for (let i = 0; i < arr.length; i++) {
+//     res = arr[i];
+//     count += arr[i];
+//     mean = Math.floor(count / res);
+//     // mean.sort((a, b) => a - b);
+//   }
+//   return mean;
+// }
+
+// let arr = [1, 2, 19, 28, 5];
+// console.log(medianAndMedian(arr));
+
+function medianAndMedian(arr) {
+  let sizeOfArray = arr.length;
+  let sum = 0;
+  for (let i = 0; i < sizeOfArray; i++) {
+    sum += arr[i];
+  }
+  let mean = Math.floor(sum / sizeOfArray);
+
+  let median;
+  arr.sort((a, b) => a - b);
+  for (let i = 0; i < arr.length; i++) {
+    if (sizeOfArray % 2 === 1) {
+      median = arr[Math.floor(sizeOfArray / 2)];
+    } else {
+      let mid1 = arr[sizeOfArray / 2 - 1];
+      let mid2 = arr[sizeOfArray / 2];
+      median = Math.floor((mid1 + mid2) / 2);
+    }
+  }
+  return [mean, median];
+}
+
+let arr = [1, 2, 19, 28, 5];
+console.log(medianAndMedian(arr));
