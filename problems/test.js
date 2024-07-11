@@ -3388,60 +3388,199 @@ async function task2() {
 // let y = 5;
 // console.log(majorityWins(arr, x, y)); // Output: 4
 
-// function largestAndSecondLargest(arr) {
-//   let largest = 0;
-//   let secondLargest = 0;
-//   for (let i = 1; i < arr.length; i++) {
-//     if (arr[i] > largest) {
-//       secondLargest = largest;
-//       largest = arr[i];
-//     } else if (arr[i] > secondLargest) {
-//       secondLargest = arr[i];
-//     }
-//   }
-//   return [largest, secondLargest];
-// }
-// let nums = [10, 10, 10, 10, 10, 10, 10, 10];
-// console.log(largestAndSecondLargest(nums)); // 10,-1
-
 // function medianAndMedian(arr) {
-//   let res = 0;
-//   let count = 0;
-//   let mean = 0;
+//   let sizeOfArray = arr.length;
+//   let sum = 0;
+//   for (let i = 0; i < sizeOfArray; i++) {
+//     sum += arr[i];
+//   }
+//   let mean = Math.floor(sum / sizeOfArray);
+
+//   let median;
 //   arr.sort((a, b) => a - b);
 //   for (let i = 0; i < arr.length; i++) {
-//     res = arr[i];
-//     count += arr[i];
-//     mean = Math.floor(count / res);
-//     // mean.sort((a, b) => a - b);
+//     if (sizeOfArray % 2 === 1) {
+//       median = arr[Math.floor(sizeOfArray / 2)];
+//     } else {
+//       let mid1 = arr[sizeOfArray / 2 - 1];
+//       let mid2 = arr[sizeOfArray / 2];
+//       median = Math.floor((mid1 + mid2) / 2);
+//     }
 //   }
-//   return mean;
+//   return [mean, median];
 // }
 
 // let arr = [1, 2, 19, 28, 5];
 // console.log(medianAndMedian(arr));
 
-function medianAndMedian(arr) {
-  let sizeOfArray = arr.length;
-  let sum = 0;
-  for (let i = 0; i < sizeOfArray; i++) {
-    sum += arr[i];
-  }
-  let mean = Math.floor(sum / sizeOfArray);
+// function evenOddFibonacci(nums) {
+//   if (nums<=1) {
+//     return nums
+//   }
+//   return  evenOddFibonacci(nums - 1) + evenOddFibonacci(nums - 2);
+// }
+// console.log(evenOddFibonacci(20))
 
-  let median;
-  arr.sort((a, b) => a - b);
-  for (let i = 0; i < arr.length; i++) {
-    if (sizeOfArray % 2 === 1) {
-      median = arr[Math.floor(sizeOfArray / 2)];
+// function generateFibonacci(n) {
+//   let fib = [0, 1];
+//   for (let i = 2; i < n; i++) {
+//     fib[i] = fib[i - 1] + fib[i - 2];
+//   }
+//   return fib;
+// }
+
+// let n = 20;
+// let fibonacciSeries = generateFibonacci(n);
+// console.log(fibonacciSeries);
+
+// function rotateArr(nums, d) {
+//   let n = nums.length;
+//   d = d % n;
+//   if (d === 0) {
+//     return nums;
+//   }
+//   const reverse = (left, right) => {
+//     while (left < right) {
+//       [nums[left], nums[right]] = [nums[right], nums[left]];
+//       left++;
+//       right--;
+//     }
+//   };
+//   reverse(0, d - 1);
+//   reverse(d, n - 1);
+//   reverse(0, n - 1);
+//   return nums;
+// }
+// let num = [5, 6, 7, 1, 2, 3, 4];
+// let d = 2;
+// console.log(rotateArr(num, d));
+
+// function binarySearch(nums, target) {
+//   let res = [];
+//   for (let i = 0; i < nums.length; i++) {
+//     if (nums[i] === target) {
+//       return i
+
+//     }
+//   }
+//   return -1
+// }
+// let nums = [1, 2, 3, 4, 5];
+// let target = 7;
+// console.log(binarySearch(nums, target));
+
+// function binarySearch(nums, target) {
+//   let low = 0;
+//   let high = nums.length - 1;
+
+//   while (low <= high) {
+//     let mid = Math.floor((low + high) / 2);
+
+//     if (nums[mid] === target) {
+//       return mid;
+//     } else if (nums[mid] < target) {
+//       low = mid + 1;
+//     } else {
+//       high = mid - 1;
+//     }
+//   }
+//   return -1;
+// }
+// let nums = [1, 2, 3, 4, 5];
+// let target = 4;
+// console.log(binarySearch(nums, target));
+
+// function binarySearch(nums, target, low = 0, high = nums.length - 1) {
+//   if (low > high) {
+//     return -1;
+//   }
+//   let mid = Math.floor((low + high) / 2);
+//   if (nums[mid] === target) {
+//     return mid;
+//   } else if (nums[mid] > target) {
+//     return binarySearch(nums, target, low, mid - 1);
+//   } else {
+//     return binarySearch(nums, target, mid + 1, high);
+//   }
+// }
+// let nums = [1, 2, 3, 4, 5];
+// let target = 4;
+// console.log(binarySearch(nums, target));
+
+// function binarySearch(nums, target) {
+//   for (let i = 0; i < nums.length; i++) {
+//     if (nums[i] === target) {
+//       return i;
+//     }
+//   }
+//   return -1;
+// }
+// let nums = [1, 1, 2, 2, 3, 4, 5, 5, 6, 7];
+// let target = 1;
+// console.log(binarySearch(nums, target));
+// function countOnes(nums) {
+//   let count = 0;
+//   for (let i = 0; i <= nums.length; i++) {
+//     if (nums[i] === 1) {
+//       count++;
+//     }
+//   }
+//   return count;
+// }
+
+// let nums = [1, 1, 1, 1, 1, 0, 0, 0];
+// console.log(countOnes(nums));
+
+// function countOnes(nums) {
+//   let low = 0;
+//   let high = nums.length;
+//   while (low <= high) {
+//     let mid = Math.floor((low + high) / 2);
+//     if (nums[mid] === 1) {
+//       low = mid + 1;
+//     } else {
+//       high = mid - 1;
+//     }
+//   }
+//   return low
+// }
+
+// let nums = [1, 1, 1, 1, 1, 0, 0, 0];
+// console.log(countOnes(nums));
+
+// function floorSqrt(num) {
+//   let low = 0;
+//   let high = num;
+//   let res = 1;
+//   while (low < high) {
+//     let mid = Math.floor((low + high) / 2);
+//     if (num === mid * mid) {
+//       return mid;
+//     } else if (mid * mid < num) {
+//       low = mid + 1;
+//       res = mid;
+//     } else {
+//       high = mid - 1;
+//     }
+//   }
+//   return res;
+// }
+// console.log(floorSqrt(5));
+
+function binarySearch(num, tagret) {
+  let low = 0;
+  let high = num.length - 1;
+  while (low <= high) {
+    console.log(high-1,'t')
+    let mid = Math.floor((low + high) / 2);
+    if (num[mid] === tagret) {
+      return 1;
+    } else if (num[mid] < tagret) {
+      low = mid + 1;
     } else {
-      let mid1 = arr[sizeOfArray / 2 - 1];
-      let mid2 = arr[sizeOfArray / 2];
-      median = Math.floor((mid1 + mid2) / 2);
+      high = mid - 1;
     }
   }
-  return [mean, median];
+  return -1;
 }
-
-let arr = [1, 2, 19, 28, 5];
-console.log(medianAndMedian(arr));
+console.log(binarySearch([-1, 0, 3, 5, 9, 12], 9)); //output 4
