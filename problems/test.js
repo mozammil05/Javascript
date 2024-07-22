@@ -3567,20 +3567,185 @@ async function task2() {
 // }
 // console.log(floorSqrt(5));
 
-function binarySearch(num, tagret) {
-  let low = 0;
-  let high = num.length - 1;
-  while (low <= high) {
-    console.log(high-1,'t')
-    let mid = Math.floor((low + high) / 2);
-    if (num[mid] === tagret) {
-      return 1;
-    } else if (num[mid] < tagret) {
-      low = mid + 1;
+// function binarySearch(num, tagret) {
+//   let low = 0;
+//   let high = num.length - 1;
+//   while (low <= high) {
+//     console.log(high-1,'t')
+//     let mid = Math.floor((low + high) / 2);
+//     if (num[mid] === tagret) {
+//       return 1;
+//     } else if (num[mid] < tagret) {
+//       low = mid + 1;
+//     } else {
+//       high = mid - 1;
+//     }
+//   }
+//   return -1;
+// }
+// console.log(binarySearch([-1, 0, 3, 5, 9, 12], 9)); //output 4
+
+// function findFloor(arr, x) {
+//   let left = 0;
+//   let right = arr.length - 1;
+//   let res = [];
+
+//   while (left <= right) {
+//     let mid = Math.floor((left + right) / 2);
+
+//     if (arr[mid] === x) {
+//       return arr[mid];
+//     } else if (arr[mid] < x) {
+//       res = arr[mid];
+//       left = mid + 1;
+//     } else if (arr[mid] > x) {
+//       right = mid - 1;
+//     }
+//   }
+//   return res;
+// }
+// let arr = [1, 2, 8, 10, 11, 12, 19];
+// console.log(findFloor(arr, 5));
+
+// function majorityElement(arr) {
+//   let n = arr.length;
+//   let majority = Math.floor(n / 2);
+
+//   for (let i = 0; i < n; i++) {
+//     let count = 0;
+//     for (let j = 0; j < n; j++) {
+//       if (arr[i] === arr[j]) {
+//         count++;
+//       }
+//     }
+//     if (count > majority) {
+//       return arr[i];
+//     }
+//   }
+//   return null;
+// }
+// let nums = [2, 2, 1, 1, 1, 2, 2];
+
+// console.log(majorityElement(nums));
+
+// function majorityElement(nums) {
+//   let res = nums[0];
+//   let count = 1;
+
+//   for (let i = 1; i < nums.length - 1; i++) {
+//     if (nums[i] === res) {
+//       count++;
+//     } else if (!--count) {
+//       res = nums[i + 1];
+//       count = 0;
+//     }
+//   }
+//   return res;
+// }
+// let arr = [6, 1, 15, 19, 9, 13, 12, 6, 7, 2, 10, 4, 1, 14, 11, 14, 14, 13];
+
+// console.log(majorityElement(arr));
+
+// function countOccurence(arr, k) {
+//   const n = arr.length;
+//   const majority = Math.floor(n / k);
+//   const map = new Map();
+
+//   // Count frequencies of each element
+//   for (const num of arr) {
+//     map.set(num, (map.get(num) || 0) + 1);
+//   }
+
+//   let count = 0;
+//   for (const [key, value] of map) {
+//     if (value > majority) {
+//       count++;
+//     }
+//   }
+
+//   return count;
+// }
+
+// let arr = [3, 1, 2, 2, 1, 2, 3, 3];
+// let k = 4;
+
+// console.log(countOccurence(arr, k));
+
+
+// Function to merge two subarrays of arr[]
+// First subarray is arr[low..mid]
+// Second subarray is arr[mid+1..high]
+function merge(arr, low, mid, high) {
+  // Sizes of two subarrays to be merged
+  let n1 = mid - low + 1;
+  let n2 = high - mid;
+
+  // Create temporary arrays
+  let left = [];
+  let right = [];
+
+  // Copy data to temporary arrays left[] and right[]
+  for (let i = 0; i < n1; i++) {
+    left[i] = arr[low + i];
+  }
+  for (let j = 0; j < n2; j++) {
+    right[j] = arr[mid + 1 + j];
+  }
+
+  // Initial indexes of the first and second subarrays
+  let i = 0;
+  let j = 0;
+
+  // Initial index of merged subarray
+  let k = low;
+
+  // Merge the temporary arrays back into arr[low..high]
+  while (i < n1 && j < n2) {
+    if (left[i] <= right[j]) {
+      arr[k++] = left[i++];
     } else {
-      high = mid - 1;
+      arr[k++] = right[j++];
     }
   }
-  return -1;
+
+  // Copy the remaining elements of left[], if any
+  while (i < n1) {
+    arr[k++] = left[i++];
+  }
+
+  // Copy the remaining elements of right[], if any
+  while (j < n2) {
+    arr[k++] = right[j++];
+  }
+
+  return arr;
 }
-console.log(binarySearch([-1, 0, 3, 5, 9, 12], 9)); //output 4
+
+// Function to implement merge sort
+// arr[] is the array to be sorted, left is the starting index, right is the ending index
+function mergeSort(arr, left, right) {
+  if (left < right) {
+    // Find the middle point to divide the array into two halves
+    let mid = Math.floor((left + right) / 2);
+
+    // Call mergeSort on the first half
+    arr = mergeSort(arr, left, mid);
+
+    // Call mergeSort on the second half
+    arr = mergeSort(arr, mid + 1, right);
+
+    // Merge the two halves sorted in the previous steps
+    arr = merge(arr, left, mid, right);
+  }
+  return arr;
+}
+
+// Example usage
+let a = [10, 5, 30, 15, 7];
+let l = 0;
+let r = a.length - 1;
+
+// Sort the array using mergeSort
+a = mergeSort(a, l, r);
+console.log(a); // Output: [5, 7, 10, 15, 30]
+
