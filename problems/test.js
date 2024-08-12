@@ -3671,81 +3671,306 @@ async function task2() {
 
 // console.log(countOccurence(arr, k));
 
-
 // Function to merge two subarrays of arr[]
 // First subarray is arr[low..mid]
 // Second subarray is arr[mid+1..high]
-function merge(arr, low, mid, high) {
-  // Sizes of two subarrays to be merged
-  let n1 = mid - low + 1;
-  let n2 = high - mid;
+// function merge(arr, low, mid, high) {
+//   // Sizes of two subarrays to be merged
+//   let n1 = mid - low + 1;
+//   let n2 = high - mid;
 
-  // Create temporary arrays
-  let left = [];
-  let right = [];
+//   // Create temporary arrays
+//   let left = [];
+//   let right = [];
 
-  // Copy data to temporary arrays left[] and right[]
-  for (let i = 0; i < n1; i++) {
-    left[i] = arr[low + i];
-  }
-  for (let j = 0; j < n2; j++) {
-    right[j] = arr[mid + 1 + j];
-  }
+//   // Copy data to temporary arrays left[] and right[]
+//   for (let i = 0; i < n1; i++) {
+//     left[i] = arr[low + i];
+//   }
+//   for (let j = 0; j < n2; j++) {
+//     right[j] = arr[mid + 1 + j];
+//   }
 
-  // Initial indexes of the first and second subarrays
-  let i = 0;
-  let j = 0;
+//   // Initial indexes of the first and second subarrays
+//   let i = 0;
+//   let j = 0;
 
-  // Initial index of merged subarray
-  let k = low;
+//   // Initial index of merged subarray
+//   let k = low;
 
-  // Merge the temporary arrays back into arr[low..high]
-  while (i < n1 && j < n2) {
-    if (left[i] <= right[j]) {
-      arr[k++] = left[i++];
-    } else {
-      arr[k++] = right[j++];
+//   // Merge the temporary arrays back into arr[low..high]
+//   while (i < n1 && j < n2) {
+//     if (left[i] <= right[j]) {
+//       arr[k++] = left[i++];
+//     } else {
+//       arr[k++] = right[j++];
+//     }
+//   }
+
+//   // Copy the remaining elements of left[], if any
+//   while (i < n1) {
+//     arr[k++] = left[i++];
+//   }
+
+//   // Copy the remaining elements of right[], if any
+//   while (j < n2) {
+//     arr[k++] = right[j++];
+//   }
+
+//   return arr;
+// }
+
+// // Function to implement merge sort
+// // arr[] is the array to be sorted, left is the starting index, right is the ending index
+// function mergeSort(arr, left, right) {
+//   if (left < right) {
+//     // Find the middle point to divide the array into two halves
+//     let mid = Math.floor((left + right) / 2);
+
+//     // Call mergeSort on the first half
+//     arr = mergeSort(arr, left, mid);
+
+//     // Call mergeSort on the second half
+//     arr = mergeSort(arr, mid + 1, right);
+
+//     // Merge the two halves sorted in the previous steps
+//     arr = merge(arr, left, mid, right);
+//   }
+//   return arr;
+// }
+
+// // Example usage
+// let a = [10, 5, 30, 15, 7];
+// let l = 0;
+// let r = a.length - 1;
+
+// // Sort the array using mergeSort
+// a = mergeSort(a, l, r);
+// console.log(a); // Output: [5, 7, 10, 15, 30]
+
+// naive sol
+// function perfectSquareCount(n) {
+//   let i = 1;
+//   let count = 0;
+//   while (i * i < n) {
+//     count++;
+//     i++;
+//   }
+//   return count;
+// }
+
+// console.log(perfectSquareCount(9));
+
+// function findcharcount(str) {
+//   let map = new Map();
+
+//   for (let i = 0; i < str.length; i++) {
+//     let char = str.charAt(i);
+//     if (map.has(char)) {
+//       map.set(char, map.get(char) + 1);
+//     } else {
+//       map.set(char, 1);
+//     }
+//   }
+//   return map;
+// }
+// console.log(findcharcount("Hello world"));
+
+// function emoveduplicateStr(str) {
+//   let word = str.split(" ");
+
+//   let res = word.filter((item, ind) => {
+//     return word.indexOf(item) === ind;
+//   });
+//   return res.join(" ");
+// }
+
+// console.log(
+//   emoveduplicateStr(
+//     "Handles empty strings and single words words words appropriately"
+//   )
+// );
+
+// function findDuplicate(nums) {
+//   nums.sort((a, b) => a - b);
+//   for (let i = 0; i < nums.length; i++) {
+//     if (nums[i - 1] === nums[i]) {
+//       return nums[i];
+//     }
+//   }
+//   return -1;
+// }
+
+// let nums = [1, 2, 3, 2, 2];
+
+// console.log(findDuplicate(nums));
+
+// function findDuplicate(nums) {
+//   let res = 0;
+//   nums.sort((a, b) => a - b);
+//   for (let i = 0; i < nums.length; i++) {
+//     if (nums[i] === nums[i - 1]) {
+//       nums[res] = nums[i];
+//       res++;
+//     }
+//   }
+//   return res;
+// }
+
+// let nums = [1];
+// const resultLength = findDuplicate(nums);
+// console.log(nums.slice(0, resultLength));
+
+// function findDifference(nums1, nums2) {
+//   let set = new Set(nums1)
+//   let set2 = new Set(nums2)
+//   let res = [];
+//   let res2 = [];
+
+//   for (const num of set) {
+//     if (!set2.has(num)) {
+//       res.push(num)
+//     }
+//   }
+//   for (const num2 of set2) {
+//     if (!set.has(num2)) {
+//       res2.push(num2);
+//     }
+//   }
+
+//  return [res,res2]
+// }
+// let nums1 = [1, 2, 3],
+//   nums2 = [2, 4, 6];
+// console.log(findDifference(nums1, nums2)); // Output: [[1,3],[4,6]]
+
+// function maxSubarraySum(nums, k) {
+//   if (nums.length < k) {
+//     return false;
+//   }
+//   let windowSum = 0;
+//   for (let i = 0; i < k; i++) {
+//     windowSum += nums[i];
+//   }
+//   let maxSum = windowSum;
+
+//   for (let i = k; i < nums.length; i++) {
+//     windowSum += nums[i] - nums[i - k];
+//     maxSum = Math.min(maxSum, windowSum);
+//   }
+//   return maxSum;
+// }
+
+// const arr = [2, 1, 5, 1, 3, 2, 8, 6, 7];
+// const k = 3;
+// const result = maxSubarraySum(arr, k);
+// console.log(`Maximum sum of a subarray of size ${k}: ${result}`); // Output: Maximum sum of a subarray of size 3: 21
+
+// function minSubArrayLen(s, arr) {
+//   let minLength = Infinity;
+//   let currSum = 0;
+//   let left = 0;
+
+//   for (let i = 0; i < arr.length; i++) {
+//     currSum += arr[i];
+
+//     while (currSum >= s) {
+//       minLength = Math.min(minLength, i - left + 1);
+//       currSum -= arr[left];
+//       left++;
+//     }
+//   }
+
+//   return minLength === Infinity ? 0 : minLength; // If minLength is not updated, return 0
+// }
+
+// // Usage example
+// const arr = [2, 3, 1, 2, 4, 3];
+// const s = 7;
+// const result = minSubArrayLen(s, arr);
+// console.log(`Minimum length of subarray with sum ≥ ${s}: ${result}`); // Minimum length of subarray with sum ≥ 7: 2
+
+//Reduce
+
+// Array.prototype.myReduce = function (cb, initial) {
+//   let acc = initial;
+//   for (let i = 0; i < this.length; i++) {
+//     acc = acc ? cb(acc, this[i], i, this) : this[i];
+//   }
+//   return acc;
+// };
+// let arr = [1, 2, 3, 4];
+
+// let res = arr.myReduce((acc, curr, i, arr) => {
+//   return acc + curr;
+// }, 0);
+
+// console.log("res", res);
+
+//Map
+
+// Array.prototype.myMap = function (cb) {
+//   let temp = [];
+//   for (let i = 0; i < this.length; i++) {
+//     temp.push(cb(this[i], i, this));
+//   }
+//   return temp;
+// };
+
+// let arr = [1, 2, 3, 4, 5];
+
+// let res = arr.myMap((item) => {
+//   return item * 2;
+// });
+// console.log("res", res);
+
+//filter
+
+// Array.prototype.myFilter = function (cb) {
+//   let temp = [];
+//   for (let i = 0; i < this.length; i++) {
+//     if (cb(this[i], i, this)) {
+//       temp.push(this[i]);
+//     }
+//   }
+//   return temp;
+// };
+
+// let arr = [1, 2, 3, 4, 5];
+// let res = arr.myFilter((item) => {
+//   return item > 2;
+// });
+
+// console.log('res', res)
+
+// const piping = (...fns) => {
+//   return function (val) {
+//     for (const item of fns) {
+//       val = item(val);
+//     }
+//     return val;
+//   };
+// };
+
+// const getSalary = (person) => person.salary;
+// const addBonus = (netSalary) => netSalary + 1000;
+// const deductTax = (grossSalary) => grossSalary - grossSalary * 0.3;
+
+// const val = { salary: 1000 };
+
+// let res = piping(getSalary, addBonus, deductTax)({ salary: 10000 });
+
+// console.log(res,'tt');
+
+function findDuplicate(nums) {
+  let set = new Set();
+  for (let i = 0; i < nums.length; i++) {
+    if (set.has(nums[i])) {
+      return true;
     }
+    set.add(nums[i]);
   }
-
-  // Copy the remaining elements of left[], if any
-  while (i < n1) {
-    arr[k++] = left[i++];
-  }
-
-  // Copy the remaining elements of right[], if any
-  while (j < n2) {
-    arr[k++] = right[j++];
-  }
-
-  return arr;
+  return false;
 }
 
-// Function to implement merge sort
-// arr[] is the array to be sorted, left is the starting index, right is the ending index
-function mergeSort(arr, left, right) {
-  if (left < right) {
-    // Find the middle point to divide the array into two halves
-    let mid = Math.floor((left + right) / 2);
-
-    // Call mergeSort on the first half
-    arr = mergeSort(arr, left, mid);
-
-    // Call mergeSort on the second half
-    arr = mergeSort(arr, mid + 1, right);
-
-    // Merge the two halves sorted in the previous steps
-    arr = merge(arr, left, mid, right);
-  }
-  return arr;
-}
-
-// Example usage
-let a = [10, 5, 30, 15, 7];
-let l = 0;
-let r = a.length - 1;
-
-// Sort the array using mergeSort
-a = mergeSort(a, l, r);
-console.log(a); // Output: [5, 7, 10, 15, 30]
-
+console.log(findDuplicate((nums = [1, 2, 3, 1])));
