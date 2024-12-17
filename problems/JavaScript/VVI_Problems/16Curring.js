@@ -1,6 +1,5 @@
 const curry = function () {
   let sum = 0;
-  let num = 0;
   return function (num = 0) {
     sum += num;
     return sum;

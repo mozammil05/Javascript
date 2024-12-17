@@ -3962,15 +3962,647 @@ async function task2() {
 
 // console.log(res,'tt');
 
-function findDuplicate(nums) {
-  let set = new Set();
-  for (let i = 0; i < nums.length; i++) {
-    if (set.has(nums[i])) {
-      return true;
+// function findDuplicate(nums) {
+//   let set = new Set();
+//   for (let i = 0; i < nums.length; i++) {
+//     if (set.has(nums[i])) {
+//       return true;
+//     }
+//     set.add(nums[i]);
+//   }
+//   return false;
+// }
+
+// console.log(findDuplicate((nums = [1, 2, 3, 1])));
+
+// const sum = (a) => {
+//   return (b) => {
+//     if (b != undefined) {
+//       return sum(a + b);
+//     } else {
+//       console.log("a", a);
+//       return a;
+//     }
+//   };
+// };
+
+// console.log(sum(2)(3)(5)()); // Output: 10
+// console.log(sum(2)(3)(5)(1)()); // Output: 11
+
+// Input: digits = [1,2,3]
+// Output: [1,2,4]
+// Explanation: The array represents the integer 123.
+// Incrementing by one gives 123 + 1 = 124.
+// Thus, the result should be [1,2,4].
+
+// function plusOne(num) {
+//   let last = num.length - 1;
+//   num[last] = num[last] + 1;
+//   return num;
+// }
+
+// const arr = [1, 2, 3];
+
+// console.log(plusOne(arr));
+// function findDuplicate(nums) {
+//   let set = new Set();
+//   let result = [];
+//   for (let i = 0; i < nums.length; i++) {
+//     if (set.has(nums[i])) {
+//       result.push(nums[i]);
+//     } else {
+//       set.add(nums[i]);
+//     }
+//   }
+//   return result;
+// }
+
+// const arr = [3, 1, 3, 4, 4, 2, 5, 6, 6, 7, 7];
+// console.log(findDuplicate(arr));
+
+// function removeDuplicate(arr) {
+//   let set = new Set();
+//   let result = [];
+//   for (let i = 0; i < arr.length; i++) {
+//     if (!set.has(arr[i])) {
+//       set.add(arr[i]);
+//       result.push(arr[i]);
+//     }
+//   }
+//   return result;
+// }
+
+// const arr = [1, 1, 4, 5, 6, 6, 7, 7, 8, 8];
+// const resultLength = removeDuplicate(arr);
+// console.log(resultLength); // Output: [1, 4, 5, 6, 7, 8]
+
+// const arr2 = ["a", "b", "c", "c", "raja", "raja"];
+// const resultLength2 = removeDuplicate(arr2);
+// const newArr = resultLength2;
+// console.log(newArr); // Output: [ 'a', 'b', 'c', 'raja' ]
+
+// function LargestNumbers(nums) {
+//   let largest = 0;
+//   let secondLargest = 0;
+//   for (let i = 0; i < nums.length; i++) {
+//     if (nums[i] > largest) {
+//       secondLargest = largest;
+//       largest = nums[i];
+//     } else if (nums[i] > secondLargest) {
+//       secondLargest = nums[i];
+//     }
+//   }
+//   return secondLargest;
+// }
+
+// let num = [1, 3, 4, 6, 7];
+
+// console.log(LargestNumbers(num));
+
+// // function countOccurrences(arr) {
+// //   const count = {};
+// //   arr.forEach((element) => {
+// //     if (count[element]) {
+// //       count[element] += 1;
+// //     } else {
+// //       count[element] = 1;
+// //     }
+// //   });
+// //   return count;
+// // }
+
+// // const arr = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4];
+// // const result = countOccurrences(arr);
+// // console.log(result);
+
+// function countOccurrences(arr) {
+//   const counts = new Map();
+//   for (let i = 0; i < arr.length; i++) {
+//     if (counts.has(arr[i])) {
+//       counts.set(arr[i], counts.get(arr[i]) + 1);
+//     } else {
+//       counts.set(arr[i], 1);
+//     }
+//   }
+//   return counts;
+// }
+
+// const arr = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4];
+// const result = countOccurrences(arr);
+// console.log(result); // Map { 1 => 1, 2 => 2, 3 => 3, 4 => 4 }
+
+// (function () {
+//   console.log("first");
+// })();
+
+// let arr = [{ a: 3 }, { b: 5 }, { c: "raja" }];
+
+// for (let i = 0; i < arr.length; i++) {
+//   if (arr[i].hasOwnProperty("c")) {
+//     arr[i].c = "mozammil";
+//     console.log("i.c", arr[i].c);
+//   }
+// }
+
+// function reverseStr(str) {
+//   let left = 0;
+//   let right = str.length - 1;
+
+//   while (left < right) {
+//     [str[left], str[right]] = [str[right], str[left]];
+//     left++;
+//     right--;
+//   }
+//   return str;
+// }
+
+// let str = ["Aman", "Sohan", "Akash"];
+
+// console.log(reverseStr(str));function reverseStr(str) {
+//   let left = 0;
+//   let right = str.length - 1;
+
+//   while (left < right) {
+//     [str[left], str[right]] = [str[right], str[left]];
+//     left++;
+//     right--;
+//   }
+//   return str;
+// }
+
+// let str = ["Aman", "Sohan", "Akash"];
+
+// console.log(reverseStr(str));
+
+// function secondL(nums) {
+//   let largest = 0;
+//   let second = 0;
+//   for (let i = 0; i < nums.length; i++) {
+//     if (nums[i] > largest) {
+//       second = largest;
+//       largest = nums[i];
+//     } else if (nums[i] > second) {
+//       second = nums[i];
+//     }
+//   }
+//   return second;
+// }
+
+// let arr = [1, 2, 4, 6, 7, 7, 9, 9, 2];
+
+// console.log(secondL(arr));
+
+// function findLongestWord(sentence) {
+//   let word = sentence.split(" ");
+//   let longestWord = "";
+//   for (let i = 0; i < word.length; i++) {
+//     if (word[i].length > longestWord.length) {
+//       longestWord = word[i];
+//     }
+//   }
+//   return longestWord;
+// }
+
+// console.log(findLongestWord("i am raja"));
+
+// Array.prototype.myMap = function (cb) {
+//   let temp = [];
+//   for (let i = 0; i < this.length; i++) {
+//     temp.push(cb(this[i], i, this));
+//   }
+//   return temp;
+// };
+
+// let arr = [2, 3, 4, 5];
+
+// let res = arr.myMap((a) => a * 2);
+
+// console.log(res);
+
+// function isDuplicate(params) {
+//   let set = new Set();
+//   for (let i = 0; i < nums.length; i++) {
+//     if (set.has(nums[i])) {
+//       return true;
+//     }else{
+//       set.add(nums[i]);
+//     }
+//   }
+//   return false;
+// }
+
+// let nums = [1, 2, 3, 4,4];
+// console.log(isDuplicate(nums));
+
+// function replaceElements(arr) {
+//   let maxRight = -1;
+
+//   for (let i = arr.length - 1; i >= 0; --i) {
+//     let current = arr[i];
+//     arr[i] = maxRight;
+//     if (current > maxRight) {
+//       maxRight = current;
+//     }
+//   }
+
+//   return arr;
+// }
+// let arr = [17, 18, 5, 4, 6, 1];
+// console.log(replaceElements(arr)); // Output: [18,6,6,6,1,-1]
+
+// function twoSum(nums, target) {
+//   let res = [];
+//   for (let i = 0; i < nums.length; i++) {
+//     for (let j = i + 1; j < nums.length; j++) {
+//       if (nums[i] + nums[j] === target) {
+//         return [i, j];
+//       }
+//     }
+//   }
+//   return [];
+// }
+
+// console.log(twoSum([3, 4, 5, 6],7));
+
+// function isPalindrome(str) {
+//   let filteredStr = str.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+//   let res = filteredStr.split("").reverse().join("");
+//   return filteredStr === res;
+// }
+// let s = "Was it a car or a cat I saw?";
+// console.log(isPalindrome(s));
+
+// function reverseInteger(nums) {
+//   let  str = nums.toString()
+//   return str.split("").reverse().join("")
+// }
+
+// console.log(reverseInteger(1234236467));
+
+// X = 30
+
+// console.log(`the values of X is ${X}`);
+
+// var X = 10;
+
+// console.log(`the values of X is ${X}`);
+
+// console.log("Global Exection Context Starts.")
+
+// var globalvariable = "I am a global variable"
+
+// function globalFunction() {
+//   console.log("Inside a global functions")
+
+// }
+
+// console.log(globalvariable)
+// globalFunction()
+
+// console.log("Global Exection Context End.");
+
+// function debounce(func, delay) {
+//   let timeOut;
+//   return function (...args) {
+//     clearTimeout(timeOut);
+//     timeOut = setTimeout(() => {
+//       func(...args);
+//     }, delay);
+//   };
+// }
+
+// const logMessage = (message) => console.log(message);
+
+// const debouncedLog = debounce(logMessage, 1000);
+
+// // Simulate rapid calls
+// debouncedLog("First");
+// debouncedLog("Second");
+// debouncedLog("Third");
+
+// // Only "Third" will be logged after 1 second of inactivity.
+
+// function throttle(fun, wait) {
+//   let shouldCall = true;
+
+//   return function (...args) {
+//     if (!shouldCall) return;
+//     fun(...args);
+//     shouldCall = false;
+//     setTimeout(() => {
+//       shouldCall = true;
+//     }, wait);
+//   };
+// }
+
+// function logMessage(message) {
+//   console.log(message, new Date().toLocaleTimeString());
+// }
+
+// const throttledLog = throttle(logMessage, 2000);
+
+// // Simulate rapid calls
+// throttledLog("Hello");
+// throttledLog("World");
+// setTimeout(() => throttledLog("Again"), 2500);
+
+// throttledLog("Message 1");
+// throttledLog("Message 2"); // Skipped
+// throttledLog("Message 3"); // Skipped
+
+// setTimeout(() => throttledLog("Message 4"), 2500); // Allowed after 2.5 seconds
+
+// (function () {
+//   var a = (b = 10);
+// })();
+
+// console.log(a);
+
+// import { useEffect, useState } from "react";
+
+// export default function App() {
+//   const [time, setTime] = useState(new Date());
+
+//   useEffect(() => {
+//     const timer = setInterval(() => {
+//       setTime(new Date());
+//     }, 1000);
+
+//     return () => clearInterval(timer);
+//   }, []);
+
+//   const formatTime = (time) => {
+//     return time.toLocaleTimeString("en-US");
+//   };
+
+//   return (
+//     <div className="App">
+//       <h1>Digital Clock</h1>
+//       <h2>Local Time: {formatTime(time)}</h2>
+//     </div>
+//   );
+// }
+
+// import { useEffect, useState } from "react";
+// import "./styles.css";
+
+// export default function App() {
+//   const [time, setTime] = useState(new Date()); // For the digital clock
+//   const [stopwatch, setStopwatch] = useState(0); // For the stopwatch
+//   const [isRunning, setIsRunning] = useState(false); // To track stopwatch running state
+//   const [intervalId, setIntervalId] = useState(null); // To store interval ID for stopping the stopwatch
+
+//   useEffect(() => {
+//     const timer = setInterval(() => {
+//       setTime(new Date()); // Update the clock every second
+//     }, 1000);
+
+//     return () => clearInterval(timer);
+//   }, []);
+
+//   useEffect(() => {
+//     // If stopwatch is running, update the stopwatch time every 1000ms
+//     if (isRunning) {
+//       const id = setInterval(() => {
+//         setStopwatch((prevTime) => prevTime + 1); // Increment stopwatch time by 1 second
+//       }, 1000);
+//       setIntervalId(id); // Store the interval ID
+//     } else {
+//       clearInterval(intervalId); // Clear the interval when stopwatch is stopped
+//     }
+
+//     return () => clearInterval(intervalId); // Cleanup on unmount
+//   }, [isRunning]);
+
+//   const formatTime = (time) => {
+//     return time.toLocaleTimeString("en-US");
+//   };
+
+//   const formatStopwatch = (seconds) => {
+//     const hours = Math.floor(seconds / 3600);
+//     const minutes = Math.floor((seconds % 3600) / 60);
+//     const secs = seconds % 60;
+//     return `${hours.toString().padStart(2, "0")}:${minutes
+//       .toString()
+//       .padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+//   };
+
+//   const toggleStopwatch = () => {
+//     setIsRunning((prevState) => !prevState); // Toggle running state of stopwatch
+//   };
+
+//   const resetStopwatch = () => {
+//     setStopwatch(0); // Reset the stopwatch time to 0
+//     setIsRunning(false); // Stop the stopwatch
+//   };
+
+//   return (
+//     <div className="App">
+//       <h1>Digital Clock and Stopwatch</h1>
+//       <h2>Local Time: {formatTime(time)}</h2>
+
+//       <h2>Stopwatch: {formatStopwatch(stopwatch)}</h2>
+
+//       <button onClick={toggleStopwatch}>
+//         {isRunning ? "Stop Stopwatch" : "Start Stopwatch"}
+//       </button>
+//       <button onClick={resetStopwatch}>Reset Stopwatch</button>
+//     </div>
+//   );
+// }
+
+// function add(n) {
+//   let accSum = n;
+//   return {
+//     add: function (m) {
+//       accSum += m;
+//       console.log("After adding:", accSum); // Log the sum after each addition
+//       return this;
+//     },
+//     sum: function () {
+//       console.log("Final sum:", accSum); // Log the sum when calling sum
+//       return accSum;
+//     },
+//   };
+// }
+
+// const value = add(4).add(2).add(3).sum();
+// console.log(value); // Outputs: 9
+
+// const anotherValue = add(10).add(20).sum();
+// console.log(anotherValue); // Outputs: 30
+
+// const curry = function () {
+//   let sum = 0;
+//   return function (num = 0) {
+//     sum += num;
+//     return sum;
+//   };
+// };
+
+// //Returns and store the inner function.
+// let sum = curry();
+
+// console.log(sum(5)); //5
+// console.log(sum(3)); //8
+// console.log(sum(4)); //12
+// console.log(sum(0)); //12
+// console.log(sum()); //12
+
+// function add(a) {
+
+//  return function (b) {
+//    if (b) {
+//     return add(a+b)
+//    }
+//    return a
+//  }
+
+// }
+
+// console.log(add(1)(2)(3)(5)(6)()) // Output: 17
+// console.log(add(2)(3)(5)()); // Output: 10
+// console.log(add(2)(3)(5)(1)()); // Output: 11
+
+// function countAnagramsBruteForce(str, pattern) {
+//   const isAnagram = (str1, str2) => {
+//     if (str1.length !== str2.length) return false;
+//     return str1.split("").sort().join("") === str2.split("").sort().join("");
+//   };
+//   let count = 0;
+//   let n = pattern.length;
+
+//   for (let i = 0; i <= str.length - n; i++) {
+//     const subStr = str.slice((i, i + n));
+//     if (isAnagram(subStr, pattern)) {
+//       count++;
+//     }
+//   }
+//   return count;
+// }
+
+// // Example usage:
+// const s = "forxxorfxdofr";
+// const pattern = "for";
+// console.log(countAnagramsBruteForce(s, pattern)); // Output: 3
+
+// function minElementArr(arr) {
+//   let min = arr[0];
+
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] < min) {
+//       min = arr[i];
+//     }
+//   }
+//   return min;
+// }
+
+// console.log(minElementArr([1, 2, 3, 4, 5]));
+
+// function debounce(fun, delay) {
+//   let timeOut;
+//   return function (...args) {
+//     clearTimeout(timeOut);
+//     timeOut = setTimeout(() => {
+//       fun(...args);
+//     }, delay);
+//   };
+// }
+
+// const debouncedFunction = debounce(() => {
+//   console.log("Debounced function executed!");
+// }, 1000);
+
+// debouncedFunction(); // Will only execute after 1 second, unless interrupted
+// debouncedFunction(); // Resets the timer
+
+// function throttle(fun, delay) {
+//   let shouldCall = true;
+//   return function (...args) {
+//     if (!shouldCall) return;
+
+//     fun(...args);
+//     shouldCall = false;
+//     setTimeout(() => {
+//       shouldCall = true;
+//     }, delay);
+//   };
+// }
+
+// const throttledFunction = throttle(() => {
+//   console.log("Throttled function executed!");
+// }, 1000);
+
+// throttledFunction(); // Executes immediately
+// throttledFunction(); // Ignored if called within 1 second
+
+// function counter() {
+//   let count = 0;
+
+//   return function () {
+//   return  count++;
+
+//   }
+// }
+
+// let res = counter()
+// console.log(res())
+// console.log(res());
+// console.log(res());
+// console.log(res())
+
+function myPromiseAll(taskList) {
+  //to store results
+  const results = [];
+
+  //to track how many promises have completed
+  let promisesCompleted = 0;
+
+  // return new promise
+  return new Promise((resolve, reject) => {
+    taskList.forEach((promise, index) => {
+      //if promise passes
+      promise
+        .then((val) => {
+          //store its outcome and increment the count
+          results[index] = val;
+          promisesCompleted += 1;
+
+          //if all the promises are completed,
+          //resolve and return the result
+          if (promisesCompleted === taskList.length) {
+            resolve(results);
+          }
+        })
+        //if any promise fails, reject.
+        .catch((error) => {
+          reject(error);
+        });
+    });
+    if (taskList.length === 0) {
+      resolve(results);
     }
-    set.add(nums[i]);
-  }
-  return false;
+  });
 }
 
-console.log(findDuplicate((nums = [1, 2, 3, 1])));
+
+// Input:
+function task(time) {
+  return new Promise(function (resolve, reject) {
+    setTimeout(function () {
+      resolve(time);
+    }, time);
+  });
+}
+
+const taskList = [task(1000), task(5000), task(3000)];
+
+//run promise.all
+myPromiseAll(taskList)
+  .then(results => {
+    console.log("got results", results)
+  })
+  .catch(console.error);
+
+// Output:
+//"got results" [1000,5000,3000]
