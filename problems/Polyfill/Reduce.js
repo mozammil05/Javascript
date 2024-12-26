@@ -15,3 +15,11 @@ let sum = nums.myReduce((acc, curr, i, arr) => {
 }, 0);
 
 console.log(sum);
+
+
+
+const original = { a: 1, b: { c: 2 } };
+const shallowCopy = Object.assign({}, original);
+const deepCopy = JSON.parse(JSON.stringify(original));
+
+console.log("deepCopy",  shallowCopy);

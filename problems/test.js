@@ -993,7 +993,7 @@ async function task2() {
 
 //     for (let i = 0; i < levelSize; i++) {
 //       const node = queue.shift(); // Remove the first node from the queue
-//       currentLevel.push(node.val); // Push node's value to current level array
+//       currentLevel.push(node.val); // Push node'str value to current level array
 
 //       // Add the left and right children of the node to the queue
 //       if (node.left) queue.push(node.left);
@@ -4549,60 +4549,367 @@ async function task2() {
 // console.log(res())
 // console.log(res());
 // console.log(res());
-// console.log(res())
+// // console.log(res())
 
-function myPromiseAll(taskList) {
-  //to store results
-  const results = [];
+// function myPromiseAll(taskList) {
+//   //to store results
+//   const results = [];
 
-  //to track how many promises have completed
-  let promisesCompleted = 0;
+//   //to track how many promises have completed
+//   let promisesCompleted = 0;
 
-  // return new promise
-  return new Promise((resolve, reject) => {
-    taskList.forEach((promise, index) => {
-      //if promise passes
-      promise
-        .then((val) => {
-          //store its outcome and increment the count
-          results[index] = val;
-          promisesCompleted += 1;
+//   // return new promise
+//   return new Promise((resolve, reject) => {
+//     taskList.forEach((promise, index) => {
+//       //if promise passes
+//       promise
+//         .then((val) => {
+//           //store its outcome and increment the count
+//           results[index] = val;
+//           promisesCompleted += 1;
 
-          //if all the promises are completed,
-          //resolve and return the result
-          if (promisesCompleted === taskList.length) {
-            resolve(results);
-          }
-        })
-        //if any promise fails, reject.
-        .catch((error) => {
-          reject(error);
-        });
-    });
-    if (taskList.length === 0) {
-      resolve(results);
-    }
-  });
+//           //if all the promises are completed,
+//           //resolve and return the result
+//           if (promisesCompleted === taskList.length) {
+//             resolve(results);
+//           }
+//         })
+//         //if any promise fails, reject.
+//         .catch((error) => {
+//           reject(error);
+//         });
+//     });
+//     if (taskList.length === 0) {
+//       resolve(results);
+//     }
+//   });
+// }
+
+// // Input:
+// function task(time) {
+//   return new Promise(function (resolve, reject) {
+//     setTimeout(function () {
+//       resolve(time);
+//     }, time);
+//   });
+// }
+
+// const taskList = [task(1000), task(5000), task(3000)];
+
+// //run promise.all
+// myPromiseAll(taskList)
+//   .then(results => {
+//     console.log("got results", results)
+//   })
+//   .catch(console.error);
+
+// // Output:
+// //"got results" [1000,5000,3000]
+
+// function characterReplacement(s, k) {
+//   let largest = 0;
+
+//   for (let i = 0; i < s.length; i++) {
+//     let set = new Set();
+//     for (let j = i; j < s.length; j++) {
+//       if (set.has(s[j])) {
+//         break;
+//       }
+//       set.add(s[j]);
+//       largest = Math.max(largest, j - i + 1);
+//     }
+//   }
+//   return largest;
+// }
+
+// let s = "ABAB";
+// let k = 2;
+
+// console.log(characterReplacement(s, k));
+
+// function characterReplacement(s) {
+//   let largest = 0;
+
+//   for (let i = 0; i < s.length; i++) {
+//     let map = new Map();
+//     let maxf = 0;
+
+//     for (let j = i; j < s.length; j++) {
+//       map.set(s[j], (map.get(s[j]) || 0) + 1);
+//       maxf = Math.max(maxf, map.get(s[j]));
+//       if (j - i + 1 - maxf <= k) {
+//         largest = Math.max(largest, j - i + 1);
+//       }
+//     }
+//   }
+
+//   return largest;
+// }
+
+// // Example usage:
+// let s = "ABAB";
+// let k = 2;
+// console.log(characterReplacement(s, k)); // Output: 4
+
+// function characterReplacement(s) {
+//   let map = new Map();
+//   let largest = 0;
+//   let maxf = 0;
+//   let left = 0;
+
+//   for (let right = 0; right < s.length; right++) {
+//     map.set(s[right], (map.get(s[right]) || 0) + 1);
+//     maxf = Math.max(maxf, map.get(s[right]));
+//     while (right - left + 1 - maxf > k) {
+//       map.set(s[left], map.get(s[left]) - 1);
+//       left++;
+//     }
+//     largest = Math.max(largest, right - left + 1);
+//   }
+
+//   return largest;
+// }
+
+// // Example usage:
+// let s = "ABAB";
+// let k = 2;
+// console.log(characterReplacement(s, k)); // Output: 4
+
+// function firstPalindrome(words) {
+//   for (let i = 0; i < words.length; i++) {
+//     const reversed = words[i].split("").reverse().join("");
+//     if (words[i] === reversed) {
+//       return reversed;
+//     }
+//   }
+//   return "";
+// }
+
+// let words = ["abc", "car", "ada", "racecar", "cool"];
+
+// console.log(firstPalindrome(words));
+// console.log(firstPalindrome(["def", "ghi"]));
+// console.log(firstPalindrome(["notapalindrome", "racecar"]));
+
+// function firstPalindrome(words) {
+//   for (let i = 0; i < words.length; i++) {
+//     const reversed = words[i].split("").reverse().join("");
+//     if (words[i] === reversed) {
+//       return words[i];
+//     }
+//   }
+//   return ""; // Return an empty string if no palindrome is found
+// }
+
+// let words = ["abc", "car", "ada", "racecar", "cool"];
+// console.log(firstPalindrome(words)); // Output: "ada"
+// console.log(firstPalindrome(["def", "ghi"])); // Output: ""
+// console.log(firstPalindrome(["notapalindrome", "racecar"])); // Output: "racecar"
+
+// console.log(a); // ReferenceError: Cannot access 'a' before initialization
+// console.log(b); // prints undefined as expected
+// let a = 10;
+// console.log(a); // 10
+// var b = 15;
+// console.log(window.a); // undefined
+// console.log(window.b); // 15
+
+// function cookies(g, s) {
+//   let count = 0;
+//   g.sort((a, b) => a - b);
+//   s.sort((a, b) => a - b);
+
+//   let i = 0;
+//   let j = 0;
+
+//   while (i < s.length && j < g.length) {
+//     if (s[j] >= g[i]) {
+//       i++;
+//     }
+//     j++;
+//   }
+//   return i;
+// }
+// let g = [1, 2, 3];
+// let s = [1, 1];
+
+// console.log(cookies(g, s));
+
+// function isPalindrome(str) {
+//   let res = str.split("").reverse().join("");
+//   return str === res;
+// }
+
+// function validPalindrome(s) {
+//   if (isPalindrome) {
+//     return true;
+//   }
+//   for (let i = 0; i < s.length; i++) {
+//     let modifiedStr = s.slice(0, i) + s.slice(i + 1);
+//     if (isPalindrome(modifiedStr)) {
+//       return true;
+//     }
+//   }
+//   return false;
+// }
+
+// console.log(validPalindrome("abca")); // Output: true
+
+// function* generateFibonacci() {
+//   let [a, b] = [0, 1];
+//   while (true) {
+//     yield a;
+//     [a, b] = [b, a + b];
+//   }
+// }
+
+// const fb = generateFibonacci();
+
+// console.log(fb.next().value);
+// console.log(fb.next().value);
+// console.log(fb.next().value);
+// console.log(fb.next().value);
+// console.log(fb.next().value);
+
+// const range = (n) => Array.from({ length: n }, (_, i) => i + 1);
+// console.log(range(10)); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+// const shuffleArray = (arr) => arr.sort(() => 0. - Math.random());
+// console.log(shuffleArray([1, 2, 3, 4])); // [3, 2, 1, 4]
+
+// const random = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+// console.log(random(1, 10)); // Result: 1 ~ 10
+
+// const findLargest = (arr) => arr.map((subArr) => Math.max(...subArr));
+// console.log(
+//   findLargest([
+//     [4, 5, 1, 3],
+//     [13, 27, 18, 26],
+//     [32, 35, 37, 39],
+//     [1000, 1001, 857, 1],
+//   ])
+// ); // [5, 27, 39, 1001]
+
+// const toObject = (arr) => ([ ...arr ]);
+// console.log(toObject(["a", "b"])); // { 0: 'a', 1: 'b' }
+
+// const intersection = (arr1, arr2) => {
+//   const set = new Set(arr1);
+//   return arr2.filter((x) => set.has(x));
+// };
+// console.log(intersection([1, 2, 3], [2, 3, 4])); // [2, 3]
+
+// const compact = (arr) => arr.filter(Boolean);
+// console.log(compact([0, 1, false, 2, "", 3, "a", "e" * 23, NaN, "s", 34])); // [1, 2, 3, 'a', 's', 34]
+
+// let salaries = {
+//   John: 100,
+//   Ann: 160,
+//   Pete: 130,
+// };
+// let sum = 0;
+// for (let i = 0; i < salaries; i++) {
+//   sum += salaries[i];
+// }
+// console.log(sum);
+
+// function three(nums) {
+//   let set = new Set();
+//   for (let i = 0; i < nums.length; i++) {
+//     for (let j = i + 1; j < nums.length; j++) {
+//       for (let k = j + 1; k < nums.length; k++) {
+//         if (nums[i] + nums[j] + nums[k] === 0) {
+//           let triplate = [nums[i], nums[j], nums[k]].sort((a, b) => a - b);
+//           set.add(JSON.stringify(triplate));
+//         }
+//       }
+//     }
+//   }
+//   return Array.from(set).map((triplate) => JSON.parse(triplate));
+// }
+
+// let nums = [-1, 0, 1, 2, -1, -4];
+
+// console.log(three(nums));
+
+// function three(nums) {
+//   nums.sort((a, b) => a - b);
+//   let res = [];
+
+//   for (let i = 0; i < nums.length; i++) {
+//     if (nums[i] > 0) break;
+//     if (i >= 0 && nums[i] === nums[i - 1]) continue;
+//     let left = i+1;
+//     let right = nums.length - 1;
+
+//     while (left < right) {
+//       const sum = nums[i] + nums[left] + nums[right];
+
+//       if (sum > 0) {
+//         right--;
+//       } else if (sum < 0) {
+//         left++;
+//       } else {
+//         res.push([nums[i], nums[left], nums[right]]);
+//         left++;
+//         right--;
+//         while (left < right && nums[left] === nums[left - 1]) {
+//           left++;
+//         }
+//       }
+//     }
+//   }
+//   return res;
+// }
+
+// let nums = [-1, 0, 1, 2, -1, -4];
+
+// console.log(three(nums));
+
+// function* flatArray(arr) {
+//   for (const ele of arr) {
+//     if (Array.isArray(ele)) {
+//       yield* flatArray(ele);
+//     } else {
+//       yield ele;
+//     }
+//   }
+// }
+
+// const a = [1, [2, [3, [4, [5]]]]];
+// const flattened = [...flatArray(a)];
+
+// console.log(flattened);
+
+// let arr = [2, 4, 6, 7];
+
+// let arr = [1, 2, 3, 4];
+// // arr.forEach((item, ind, arr) => {
+// //   arr[ind] = item + 1;
+// // });
+
+// // console.log(arr);
+
+// arr.forEach((item) => {
+//   if (item === 3) return; // "Skip" item 3 (similar to continue)
+//   console.log(item);
+// });
+
+
+
+
+
+
+function rotateArr(nums,k) {
+  for (let i = 0; i < k; i++) {
+    const ele = nums.pop()
+    nums.unshift(ele)
+    
+  }
+  return nums
 }
 
+let nums = [1, 2, 3, 4, 5, 6, 7],
+  k = 3;
 
-// Input:
-function task(time) {
-  return new Promise(function (resolve, reject) {
-    setTimeout(function () {
-      resolve(time);
-    }, time);
-  });
-}
-
-const taskList = [task(1000), task(5000), task(3000)];
-
-//run promise.all
-myPromiseAll(taskList)
-  .then(results => {
-    console.log("got results", results)
-  })
-  .catch(console.error);
-
-// Output:
-//"got results" [1000,5000,3000]
+  console.log(rotateArr(nums,k));
